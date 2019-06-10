@@ -1,0 +1,32 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <link type="text/css" rel="stylesheet" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <title>GB 7</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="row">
+    <div class="container col-8">
+        <th:block th:with="colCount=${4}">
+            <div th:each="r : ${#numbers.sequence(0, users.size(), colCount)}" class="row">
+                <div th:each="c : ${#numbers.sequence(0, colCount - 1)}" th:if="${r + c &lt; users.size()}"
+                     class="col-3">
+                    <div class="card custom-card">
+                        <div class="card-block">
+                            <h4 class="card-title" th:text="${users.get(r + c).username}"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

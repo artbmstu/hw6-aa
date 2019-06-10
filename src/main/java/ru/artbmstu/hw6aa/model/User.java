@@ -38,4 +38,9 @@ public class User {
     @ToString.Exclude
     private VerificationToken token;
 
+    public User(String username, String email){
+        this.username = username;
+        this.email = email;
+    }
+
 }

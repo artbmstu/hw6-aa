@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.artbmstu.hw6aa.model.User;
 import ru.artbmstu.hw6aa.repository.UserRepository;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -24,5 +25,9 @@ public class UserService {
     public void saveUser(User user) {
         identityMap.put(user.getId(), user);
         userRepository.save(user);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

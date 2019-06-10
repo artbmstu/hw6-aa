@@ -15,6 +15,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("allUsers")
+    public ModelAndView allUsers(){
+        return new ModelAndView("all-users", "users", userService.getAllUsers());
+    }
+
     @GetMapping("{id}")
     public ModelAndView user(@PathVariable(name = "id") String id){
         return new ModelAndView("user", "user", userService.getUserById(id));
